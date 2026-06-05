@@ -1,0 +1,7 @@
+# VANTAGE Hermes agent — runtime config
+# API key: run `hermes-deploy secret set GEMINI_API_KEY <your-key>` (never commit the key)
+
+model:
+  default: gemini-2.0-flash
+  provider: gemini
+  base_url: https://generativelanguage.googleapis.com/v1beta

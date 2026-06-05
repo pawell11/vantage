@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VANTAGE Docs — System Documentation</title>
+    <meta
+      name="description"
+      content="VANTAGE technical documentation: deployment, API reference, edge runtime, security, and billing integration."
+    />
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container-wide topbar-inner">
+        <a href="index.html" class="brand">
+          <span class="brand-mark">◢</span>
+          <span>VANTAGE</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="index.html#platform" class="nav-link">Platform</a>
+          <a href="index.html#architecture" class="nav-link">Architecture</a>
+          <a href="index.html#specs" class="nav-link">Performance</a>
+          <a href="index.html#use-cases" class="nav-link">Use Cases</a>
+          <a href="docs.html" class="nav-link" aria-current="page">Docs</a>
+        </nav>
+        <div class="topbar-right">
+          <a href="mailto:vantageaiservices@gmail.com" class="topbar-contact">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Documentation</p>
+          <h1>Deployment.<br />Integration. Operations.</h1>
+          <p class="hero-sub">
+            Everything teams need to onboard VANTAGE. Architecture, APIs, edge runtime,
+            security, and billing — in one place.
+          </p>
+          <div class="hero-actions">
+            <a href="#guide" class="btn primary">Start the guide</a>
+            <a href="mailto:vantageaiservices@gmail.com?subject=Docs%20Access%20-%20VANTAGE" class="btn ghost">Request full API package</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="guide" class="section alt reveal">
+        <div class="section-head">
+          <span class="kicker">Reference</span>
+          <h2>Browse by topic.</h2>
+          <p class="section-intro">Documentation organized around operational areas.</p>
+        </div>
+
+        <div class="platform">
+          <nav class="platform-tabs" role="tablist" aria-label="Documentation sections">
+            <button class="ptab is-active" role="tab" aria-selected="true" data-tab="quickstart">Quick Start</button>
+            <button class="ptab" role="tab" aria-selected="false" data-tab="architecture">Architecture</button>
+            <button class="ptab" role="tab" aria-selected="false" data-tab="ingestion">Camera Onboarding</button>
+            <button class="ptab" role="tab" aria-selected="false" data-tab="api">API Reference</button>
+            <button class="ptab" role="tab" aria-selected="false" data-tab="runtime">Edge Runtime</button>
+            <button class="ptab" role="tab" aria-selected="false" data-tab="security">Security &amp; Access</button>
+            <button class="ptab" role="tab" aria-selected="false" data-tab="billing">Billing Rail</button>
+            <button class="ptab" role="tab" aria-selected="false" data-tab="support">Support &amp; SLAs</button>
+          </nav>
+
+          <div class="platform-panels">
+            <article class="ppanel is-active" data-panel="quickstart">
+              <h3>Quick start.</h3>
+              <p>
+                A typical pilot deploys in two phases — a one-week sensor onboarding window
+                followed by two weeks of operational tuning. Reference hardware and access
+                credentials are provided after the briefing.
+              </p>
+              <dl class="spec-list">
+                <div><dt>Phase 1</dt><dd>Network access · feed inventory · edge install</dd></div>
+                <div><dt>Phase 2</dt><dd>Model tuning · alert calibration · operator training</dd></div>
+                <div><dt>Go-live</dt><dd>Production rollout · monitoring · on-call</dd></div>
+              </dl>
+            </article>
+
+            <article class="ppanel" data-panel="architecture">
+              <h3>System architecture.</h3>
+              <p>
+                A four-layer pipeline: ingestion, perception, fusion, and command.
+                Each layer is independently scalable across on-prem, edge, or hybrid cloud.
+              </p>
+              <dl class="spec-list">
+                <div><dt>Ingestion</dt><dd>RTSP · WebRTC · ONVIF · drone SDKs</dd></div>
+                <div><dt>Perception</dt><dd>Detection · tracking · re-identification</dd></div>
+                <div><dt>Fusion</dt><dd>Cross-camera handoff · scene model</dd></div>
+                <div><dt>Command</dt><dd>Alerts · dispatch APIs · evidence export</dd></div>
+              </dl>
+            </article>
+
+            <article class="ppanel" data-panel="ingestion">
+              <h3>Camera onboarding.</h3>
+              <p>
+                Cameras are registered through the admin console or via the configuration API.
+                Each feed is auto-calibrated and benchmarked before joining the active fleet.
+              </p>
+              <dl class="spec-list">
+                <div><dt>Discovery</dt><dd>ONVIF auto-discovery on local subnets</dd></div>
+                <div><dt>Authentication</dt><dd>Per-feed credentials in secure vault</dd></div>
+                <div><dt>Calibration</dt><dd>Automatic homography</dd></div>
+                <div><dt>Health</dt><dd>Continuous stream and uptime monitoring</dd></div>
+              </dl>
+            </article>
+
+            <article class="ppanel" data-panel="api">
+              <h3>API reference.</h3>
+              <p>
+                Stable REST endpoints for event subscription, subject queries, and case
+                export. Streaming events available over WebSocket for low-latency surfaces.
+              </p>
+              <dl class="spec-list">
+                <div><dt>Auth</dt><dd>OAuth 2.0 / OIDC · scoped tokens</dd></div>
+                <div><dt>Events</dt><dd>GET /v1/events · WS /v1/stream</dd></div>
+                <div><dt>Subjects</dt><dd>GET /v1/subjects/:id (history, links)</dd></div>
+                <div><dt>Export</dt><dd>POST /v1/cases/:id/export (signed bundle)</dd></div>
+              </dl>
+            </article>
+
+            <article class="ppanel" data-panel="runtime">
+              <h3>Edge runtime.</h3>
+              <p>
+                The runtime ships as a hardened container image with model weights and
+                accelerator drivers preconfigured. Updates are signed and verified at boot.
+              </p>
+              <dl class="spec-list">
+                <div><dt>Targets</dt><dd>Jetson Orin · Hailo-8 · Intel iGPU · x86 + GPU</dd></div>
+                <div><dt>Image</dt><dd>OCI-compliant · signed releases</dd></div>
+                <div><dt>Footprint</dt><dd>&lt; 1.4 GB RAM per stream</dd></div>
+                <div><dt>Updates</dt><dd>A/B partitions with rollback</dd></div>
+              </dl>
+            </article>
+
+            <article class="ppanel" data-panel="security">
+              <h3>Security &amp; access.</h3>
+              <p>
+                Role-based access with fine-grained audit trail. All telemetry is encrypted
+                in transit and at rest. Event records are tamper-evident for evidentiary use.
+              </p>
+              <dl class="spec-list">
+                <div><dt>Encryption</dt><dd>AES-256 · TLS 1.3 (FIPS 140-2)</dd></div>
+                <div><dt>Access</dt><dd>RBAC · MFA · SAML / OIDC SSO</dd></div>
+                <div><dt>Audit</dt><dd>Append-only log · signed export</dd></div>
+                <div><dt>Privacy</dt><dd>Configurable retention &amp; redaction</dd></div>
+              </dl>
+            </article>
+
+            <article class="ppanel" data-panel="billing">
+              <h3>Billing rail.</h3>
+              <p>
+                Usage metering is per stream-hour and per event class. Settlement is
+                Solana-first, with Ethereum and Monero phases planned for broader compliance
+                and privacy-preserving use cases.
+              </p>
+              <dl class="spec-list">
+                <div><dt>Phase 1</dt><dd>Solana — micropayments · subscriptions</dd></div>
+                <div><dt>Phase 2</dt><dd>Ethereum — enterprise procurement</dd></div>
+                <div><dt>Phase 3</dt><dd>Monero — privacy-preserving settlement</dd></div>
+                <div><dt>Metering</dt><dd>Stream-hours · event classes · retention tier</dd></div>
+              </dl>
+            </article>
+
+            <article class="ppanel" data-panel="support">
+              <h3>Support &amp; SLAs.</h3>
+              <p>
+                Production deployments include 24/7 on-call response and a named deployment
+                engineer. SLA tiers cover detection availability, latency, and uptime.
+              </p>
+              <dl class="spec-list">
+                <div><dt>Response</dt><dd>P1 &lt; 15 min · P2 &lt; 4 hours</dd></div>
+                <div><dt>Uptime</dt><dd>99.3% baseline · 99.9% tier-1</dd></div>
+                <div><dt>Channels</dt><dd>Email · priority phone · on-site review</dd></div>
+              </dl>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="quickref" class="section reveal">
+        <div class="section-head">
+          <span class="kicker">Quick reference</span>
+          <h2>Operational targets.</h2>
+        </div>
+        <div class="specs">
+          <div class="spec-row">
+            <span class="spec-val">&lt;250ms</span>
+            <span class="spec-key">Edge inference latency</span>
+            <span class="spec-note">Optimized model pack</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-val">99.3%</span>
+            <span class="spec-key">Pipeline uptime</span>
+            <span class="spec-note">Monitored fleet baseline</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-val">24/7</span>
+            <span class="spec-key">Continuous operation</span>
+            <span class="spec-note">RGB + thermal surveillance</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-val">&lt;15min</span>
+            <span class="spec-key">P1 on-call response</span>
+            <span class="spec-note">Tier-1 contracts</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container-wide footer-grid">
+        <div>
+          <div class="brand">
+            <span class="brand-mark">◢</span>
+            <span>VANTAGE</span>
+          </div>
+          <p class="dim">AI perception for law enforcement.</p>
+        </div>
+        <div>
+          <p class="footer-label">Contact</p>
+          <a href="mailto:vantageaiservices@gmail.com" class="footer-link">vantageaiservices@gmail.com</a>
+        </div>
+        <div>
+          <p class="footer-label">Site</p>
+          <a href="index.html" class="footer-link">Back to main</a>
+        </div>
+        <div>
+          <p class="footer-label">Version</p>
+          <span class="footer-link">v4.2 · prod</span>
+        </div>
+      </div>
+      <div class="container-wide footer-legal">
+        <span>© VANTAGE Systems</span>
+        <span class="dim">All rights reserved</span>
+      </div>
+    </footer>
+
+    <div class="call-modal" id="callModal" aria-hidden="true">
+      <div class="call-modal-card" role="dialog" aria-modal="true" aria-labelledby="callModalTitle">
+        <button class="call-modal-close" id="callModalClose" aria-label="Close popup">×</button>
+
+        <div class="call-modal-badge">
+          <span>Briefing</span>
+        </div>
+
+        <h3 id="callModalTitle">Talk to the VANTAGE team.</h3>
+        <p>Schedule a live walkthrough. Typical response under 24 hours.</p>
+
+        <a
+          href="mailto:vantageaiservices@gmail.com?subject=Briefing%20Request%20-%20VANTAGE&body=Hi%20VANTAGE%20team%2C%20I%27d%20like%20to%20schedule%20a%20briefing."
+          class="call-modal-cta"
+          >Request a briefing</a
+        >
+
+        <div class="call-modal-meta">
+          <a
+            href="mailto:vantageaiservices@gmail.com"
+            class="meta-pill"
+            id="copyEmailBtn"
+            title="Copy email"
+          >
+            vantageaiservices@gmail.com
+          </a>
+          <span class="meta-pill subtle">&lt; 24h reply</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
